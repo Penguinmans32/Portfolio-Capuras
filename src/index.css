@@ -1,0 +1,169 @@
+@import "tailwindcss";
+
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&f[]=jet-brains-mono@400,700&display=swap');
+
+@custom-variant dark (&:where(. dark, .dark *));
+@custom-variant light (&:where(.light, .light *));
+
+@theme {
+  --font-sans: 'Satoshi', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --color-accent-primary: #06b6d4;
+  --color-accent-secondary: #3b82f6;
+}
+
+:root {
+  color-scheme: light dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Dark mode (default) */
+.dark {
+  color-scheme: dark;
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #171717;
+  --text-primary: #f5f5f5;
+  --text-secondary: #a3a3a3;
+  --border-color: #262626;
+}
+
+/* Light mode */
+.light {
+  color-scheme: light;
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --text-primary: #0a0a0a;
+  --text-secondary: #525252;
+  --border-color: #e2e8f0;
+}
+
+body {
+  font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, sans-serif;
+  @apply antialiased overflow-x-hidden;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.dark body {
+  background-image:
+    radial-gradient(circle at 15% 50%, rgba(6, 182, 212, 0.08), transparent 25%),
+    radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.08), transparent 25%);
+}
+
+.light body {
+  background-image:
+    radial-gradient(circle at 15% 50%, rgba(6, 182, 212, 0.15), transparent 25%),
+    radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.15), transparent 25%);
+}
+
+/* Text Gradient */
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500;
+}
+
+/* Custom Scrollbar - Dark */
+.dark ::-webkit-scrollbar {
+  width: 8px;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #171717;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #404040;
+  border-radius: 9999px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #525252;
+}
+
+/* Custom Scrollbar - Light */
+.light ::-webkit-scrollbar {
+  width: 8px;
+}
+
+.light ::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+.light ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+
+.light ::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Selection */
+.dark ::selection {
+  background: rgba(6, 182, 212, 0.3);
+  color: #a5f3fc;
+}
+
+.light ::selection {
+  background: rgba(6, 182, 212, 0.3);
+  color: #0e7490;
+}
+
+/* Performance-optimized CSS animations */
+@keyframes twinkle {
+
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.6;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes particle-float {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0);
+  }
+
+  20% {
+    opacity: 0.8;
+  }
+
+  80% {
+    opacity: 0.8;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-100px) scale(1.5);
+  }
+}
+
+.particle-float {
+  animation: particle-float 5s ease-out infinite;
+}
+
+/* GPU acceleration hints */
+.will-change-transform {
+  will-change: transform;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
