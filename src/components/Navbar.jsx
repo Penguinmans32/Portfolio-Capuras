@@ -16,13 +16,14 @@ const Navbar = () => {
 
     // Track active section
     useEffect(() => {
-        const sections = ['hero', 'about', 'skills', 'projects', 'experience', 'contact'];
+        // Added 'certificates' to the sections array
+        const sections = ['hero', 'about', 'skills', 'projects', 'experience', 'certificates', 'contact'];
 
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        setActiveSection(entry.target.id);
+                        setActiveSection(entry. target.id);
                     }
                 });
             },
@@ -39,15 +40,16 @@ const Navbar = () => {
 
     const navLinks = [
         { name: 'About', href: '#about' },
-        { name: 'Skills', href: '#skills' },
+        { name: 'Skills', href:  '#skills' },
         { name: 'Projects', href: '#projects' },
-        { name: 'Experience', href: '#experience' },
+        { name:  'Experience', href: '#experience' },
+        { name: 'Certificates', href:  '#certificates' },
         { name: 'Contact', href: '#contact' },
     ];
 
     const socialLinks = [
-        { Icon: Github, href: 'https://github.com', label: 'GitHub' },
-        { Icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
+        { Icon: Github, href: 'https://github.com/Penguinmans32', label: 'GitHub' },
+        { Icon: Linkedin, href: 'https://www.linkedin.com/in/vaness-capuras-b25b4634a/', label: 'LinkedIn' },
     ];
 
     const navVariants = {
@@ -69,14 +71,14 @@ const Navbar = () => {
         visible: {
             y: 0,
             opacity: 1,
-            transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] }
+            transition: { duration:  0.4, ease: [0.22, 1, 0.36, 1] }
         }
     };
 
     const mobileMenuVariants = {
         hidden: {
             opacity: 0,
-            height: 0,
+            height:  0,
             transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] }
         },
         visible: {
@@ -94,24 +96,25 @@ const Navbar = () => {
     const mobileItemVariants = {
         hidden: { x: -20, opacity: 0 },
         visible: {
-            x: 0,
+            x:  0,
             opacity: 1,
             transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] }
         }
     };
 
     return (
-        <motion.nav
+        <motion. nav
             variants={navVariants}
             initial="hidden"
             animate="visible"
             className="fixed top-0 left-0 right-0 z-50 px-4 py-4"
         >
             <motion.div
-                className={`container mx-auto max-w-6xl rounded-2xl transition-all duration-500 ${isScrolled
-                    ? 'bg-white/80 dark:bg-neutral-900/80 backdrop-blur-xl shadow-lg shadow-neutral-200/20 dark:shadow-black/20 border border-neutral-200/50 dark:border-neutral-800/50'
-                    : 'bg-transparent'
-                    }`}
+                className={`container mx-auto max-w-6xl rounded-2xl transition-all duration-500 ${
+                    isScrolled
+                        ? 'bg-white/80 dark:bg-neutral-900/80 backdrop-blur-xl shadow-lg shadow-neutral-200/20 dark:shadow-black/20 border border-neutral-200/50 dark:border-neutral-800/50'
+                        : 'bg-transparent'
+                }`}
             >
                 <div className="px-6 h-16 flex items-center justify-between">
                     {/* Logo */}
@@ -130,7 +133,7 @@ const Navbar = () => {
                             <motion.div
                                 className="absolute -top-1 -right-1"
                                 animate={{ scale: [1, 1.2, 1], opacity: [0.5, 1, 0.5] }}
-                                transition={{ duration: 2, repeat: Infinity }}
+                                transition={{ duration: 2, repeat:  Infinity }}
                             >
                                 <Sparkles size={12} className="text-amber-400" />
                             </motion.div>
@@ -139,7 +142,7 @@ const Navbar = () => {
                             <span className="font-bold text-lg text-neutral-900 dark:text-white group-hover:text-cyan-500 dark:group-hover:text-cyan-400 transition-colors">
                                 Vaness Capuras
                             </span>
-                            <span className="text-[10px] font-mono text-neutral-500 dark:text-neutral-500 -mt-1">
+                            <span className="text-[10px] font-mono text-neutral-500 dark: text-neutral-500 -mt-1">
                                 Software Developer
                             </span>
                         </div>
@@ -147,21 +150,22 @@ const Navbar = () => {
 
                     {/* Desktop Navigation */}
                     <div className="hidden md:flex items-center gap-1">
-                        {navLinks.map((link, index) => {
-                            const isActive = activeSection === link.href.slice(1);
+                        {navLinks.map((link) => {
+                            const isActive = activeSection === link.href. slice(1);
                             return (
                                 <motion.a
-                                    key={link.name}
+                                    key={link. name}
                                     href={link.href}
                                     variants={linkVariants}
                                     className="relative px-4 py-2 text-sm font-medium transition-colors"
                                     whileHover={{ y: -2 }}
                                     whileTap={{ y: 0 }}
                                 >
-                                    <span className={`relative z-10 ${isActive
-                                        ? 'text-cyan-500 dark:text-cyan-400'
-                                        : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white'
-                                        }`}>
+                                    <span className={`relative z-10 ${
+                                        isActive
+                                            ? 'text-cyan-500 dark:text-cyan-400'
+                                            : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white'
+                                    }`}>
                                         {link.name}
                                     </span>
 
@@ -177,7 +181,7 @@ const Navbar = () => {
                                     {/* Hover underline */}
                                     <motion.span
                                         className="absolute bottom-1 left-4 right-4 h-0.5 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full origin-left"
-                                        initial={{ scaleX: 0 }}
+                                        initial={{ scaleX:  0 }}
                                         whileHover={{ scaleX: 1 }}
                                         transition={{ duration: 0.3 }}
                                     />
@@ -196,7 +200,7 @@ const Navbar = () => {
                                     href={href}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="p-2.5 rounded-xl text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800/50 transition-all"
+                                    className="p-2.5 rounded-xl text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover: bg-neutral-100 dark: hover:bg-neutral-800/50 transition-all"
                                     whileHover={{ scale: 1.1, y: -2 }}
                                     whileTap={{ scale: 0.95 }}
                                     aria-label={label}
@@ -214,7 +218,7 @@ const Navbar = () => {
 
                         {/* Mobile Menu Button */}
                         <motion.button
-                            className="md:hidden p-2.5 rounded-xl text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800/50 transition-colors"
+                            className="md:hidden p-2.5 rounded-xl text-neutral-600 dark: text-neutral-400 hover: bg-neutral-100 dark: hover:bg-neutral-800/50 transition-colors"
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
@@ -226,7 +230,7 @@ const Navbar = () => {
                                         key="close"
                                         initial={{ rotate: -90, opacity: 0 }}
                                         animate={{ rotate: 0, opacity: 1 }}
-                                        exit={{ rotate: 90, opacity: 0 }}
+                                        exit={{ rotate:  90, opacity: 0 }}
                                         transition={{ duration: 0.2 }}
                                     >
                                         <X size={20} />
@@ -236,7 +240,7 @@ const Navbar = () => {
                                         key="menu"
                                         initial={{ rotate: 90, opacity: 0 }}
                                         animate={{ rotate: 0, opacity: 1 }}
-                                        exit={{ rotate: -90, opacity: 0 }}
+                                        exit={{ rotate:  -90, opacity: 0 }}
                                         transition={{ duration: 0.2 }}
                                     >
                                         <Menu size={20} />
@@ -261,15 +265,16 @@ const Navbar = () => {
                                 {navLinks.map((link) => {
                                     const isActive = activeSection === link.href.slice(1);
                                     return (
-                                        <motion.a
+                                        <motion. a
                                             key={link.name}
                                             href={link.href}
                                             variants={mobileItemVariants}
                                             onClick={() => setIsMobileMenuOpen(false)}
-                                            className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all ${isActive
-                                                ? 'bg-cyan-500/10 text-cyan-500 dark:text-cyan-400 border border-cyan-500/20'
-                                                : 'text-neutral-600 dark: text-neutral-400 hover: bg-neutral-100 dark: hover:bg-neutral-800/50 hover:text-neutral-900 dark:hover:text-white'
-                                                }`}
+                                            className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all ${
+                                                isActive
+                                                    ? 'bg-cyan-500/10 text-cyan-500 dark:text-cyan-400 border border-cyan-500/20'
+                                                    :  'text-neutral-600 dark: text-neutral-400 hover: bg-neutral-100 dark: hover:bg-neutral-800/50 hover:text-neutral-900 dark:hover:text-white'
+                                            }`}
                                         >
                                             {isActive && (
                                                 <motion.div
@@ -277,7 +282,7 @@ const Navbar = () => {
                                                     layoutId="mobileActive"
                                                 />
                                             )}
-                                            {link.name}
+                                            {link. name}
                                         </motion.a>
                                     );
                                 })}

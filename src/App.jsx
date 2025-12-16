@@ -6,6 +6,7 @@ import About from './components/About';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Experience from './components/Experience';
+import Certificates from './components/Certificates';
 import Contact from './components/Contact';
 
 function AppContent() {
@@ -23,6 +24,7 @@ function AppContent() {
         <Skills />
         <Projects />
         <Experience />
+        <Certificates />
         <Contact />
       </main>
       <footer className={`py-8 text-center text-sm border-t transition-colors duration-500 ${theme === 'dark'
